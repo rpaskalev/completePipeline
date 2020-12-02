@@ -20,6 +20,7 @@ resource "aws_iam_instance_profile" "codebuild_profile" {
   role = aws_iam_role.deploy_role.name
 }
 
+
 resource "aws_iam_role" "deploy_role" {
   name = "test_role"
   path = "/"
@@ -40,6 +41,8 @@ resource "aws_iam_role" "deploy_role" {
 }
 EOF
 }
+
+/*
 resource "aws_iam_policy" "codedeploy-policy" {
   name = "codedeploy"
   path = "/"
@@ -52,7 +55,8 @@ resource "aws_iam_policy" "codedeploy-policy" {
             "Action": [
                 "s3:GetObject",
                 "s3:GetObjectVersion",
-                "s3:ListBucket"
+                "s3:ListBucket",
+                "s3:*"
             ],
             "Effect": "Allow",
             "Resource": "*"
@@ -61,9 +65,10 @@ resource "aws_iam_policy" "codedeploy-policy" {
 }
 EOF
 }
+*/
 
 resource "aws_iam_role_policy_attachment" "attach" {
   role       = aws_iam_role.deploy_role.name
-  policy_arn = aws_iam_policy.codedeploy-policy.arn
+  policy_arn = "arn:aws:iam::aws:policy/service-role/AmazonEC2RoleforAWSCodeDeploy"
 }
 
