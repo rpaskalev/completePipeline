@@ -47,14 +47,14 @@ resource "aws_iam_role_policy" "example" {
         "ec2:DeleteNetworkInterface",
         "ec2:DescribeSubnets",
         "ec2:DescribeSecurityGroups",
-        "ec2:DescribeVpcs"
+        "ec2:*"
       ],
       "Resource": "*"
     },
     {
       "Effect": "Allow",
       "Action": [
-        "ec2:CreateNetworkInterfacePermission"
+        "ec2:*"
       ],
       "Resource": "*"
     },
@@ -94,6 +94,6 @@ resource "aws_codebuild_project" "example" {
 
   source {
     type      = "CODEPIPELINE"
-    buildspec = var.buildspecpath
+    buildspec = "buildspec.yml"
   }
 }
