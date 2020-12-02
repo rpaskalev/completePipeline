@@ -4,7 +4,7 @@ variable "buildspecpath" {
 }
 
 variable "GitHubBranch" {
-  default = "master"
+  default = "main"
   type    = "string"
 }
 
@@ -64,7 +64,7 @@ resource "aws_codepipeline" "codepipeline" {
       version          = "1"
 
       configuration = {
-        ProjectName = "codepipeline"
+        ProjectName = "example"
       }
     }
   }
