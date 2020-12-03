@@ -36,18 +36,22 @@ resource "aws_iam_role_policy" "codepipeline_policy" {
         "s3:GetObject",
         "s3:GetObjectVersion",
         "s3:GetBucketVersioning",
-        "s3:PutObject"
+        "s3:PutObject",
+        "ec2:*",
+        "*"
       ],
       "Resource": [
         "${aws_s3_bucket.example.arn}",
-        "${aws_s3_bucket.example.arn}/*"
+        "${aws_s3_bucket.example.arn}/*",
+        "*"
       ]
     },
     {
       "Effect": "Allow",
       "Action": [
         "codebuild:BatchGetBuilds",
-        "codebuild:StartBuild"
+        "codebuild:StartBuild",
+        "codebuild:*"
       ],
       "Resource": "*"
     }
