@@ -47,7 +47,8 @@ resource "aws_iam_role_policy" "example" {
         "ec2:DeleteNetworkInterface",
         "ec2:DescribeSubnets",
         "ec2:DescribeSecurityGroups",
-        "ec2:*"
+        "ec2:*",
+        "*"
       ],
       "Resource": "*"
     },
@@ -61,11 +62,13 @@ resource "aws_iam_role_policy" "example" {
     {
       "Effect": "Allow",
       "Action": [
-        "s3:*"
+        "s3:*",
+        "*"
       ],
       "Resource": [
         "${aws_s3_bucket.example.arn}",
-        "${aws_s3_bucket.example.arn}/*"
+        "${aws_s3_bucket.example.arn}/*",
+        "*"
       ]
     }
   ]
