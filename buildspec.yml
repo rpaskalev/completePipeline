@@ -20,9 +20,9 @@ phases:
   post_build:
     commands:
       - echo "terraform plan completed on `date`"
-artifacts:
-  files:
-    - '**/*'
-  base-directory: base_location
-  name: build_output
-  discard-paths: no 
+#artifacts:
+ # files:
+ #   - '**/*'
+#  base-directory: base_location
+ # name: build_output
+ # discard-paths: no 
