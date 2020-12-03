@@ -19,7 +19,7 @@ variable "GitHubRepo" {
 }
 
 variable "GitHubToken" {
-  type    = "string"
+  type = "string"
 }
 
 resource "aws_codepipeline" "codepipeline" {
@@ -85,7 +85,7 @@ resource "aws_codepipeline" "codepipeline" {
         #Capabilities   = "CAPABILITY_AUTO_EXPAND,CAPABILITY_IAM"
         #OutputFileName = "CreateStackOutput.json"
         #role_arn = aws_iam_role.deploy_role.arn
-        ApplicationName = "aws_codedeploy_deployment_group.example.name"
+        ApplicationName     = "aws_codedeploy_deployment_group.example.name"
         DeploymentGroupName = "aws_codedeploy_deployment_group.example.name"
         #StackName      = "MyStack"
         #TemplatePath   = "build_output::sam-templated.yaml"

@@ -27,32 +27,21 @@ resource "aws_iam_role_policy" "deploy_policy" {
   name = "deploy_policy"
   role = aws_iam_role.deploy_role.id
 
-  policy = <<EOF
-{
-  "Version": "2012-10-17",
-  "Statement": [
-    {
-      "Effect":"Allow",
-      "Action": "*"
-      "Resource": [
-        "${aws_s3_bucket.example.arn}",
-        "${aws_s3_bucket.example.arn}/*",
-        "*"
-      ]
-    },
-  ]
+  policy = <<-EOF
+  {
+    "Version": "2012-10-17",
+    "Statement": [
+      {
+        "Action": [
+          "*"
+        ],
+        "Effect": "Allow",
+        "Resource": "*"
+      }
+    ]
+  }
+  EOF
 }
-EOF
-}
-----------------------------
-resource "aws_iam_role_policy_attachment" "AWSCodeDeployRole" {
-  count      = "${length(var.iam_policy_arn)}"
-  policy_arn = "${var.iam_policy_arn[count.index]}"
-
-  role       = aws_iam_role.deploy_role.name
-}
-
-variable "iam_policy_arn" {}
 
 resource "aws_codedeploy_app" "example" {
   name = "MyDemoApplication"
