@@ -5,7 +5,7 @@ provider "aws" {
 
 terraform {
   backend "s3" {
-    bucket = "radyzone-bucket-2"
+    bucket = "rady-bucket-2"
     key    = "myec2/terraform-web-app"
     region = "us-east-1"
   }
