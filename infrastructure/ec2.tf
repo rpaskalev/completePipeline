@@ -3,6 +3,13 @@ provider "aws" {
   region = "us-east-1"
 }
 
+terraform {
+  backend "s3" {
+    bucket = "radyzone-bucket-2"
+    key    = "myec2/terraform-web-app"
+    region = "us-east-1"
+  }
+}
 resource "aws_instance" "web" {
   ami                  = "ami-04d29b6f966df1537"
   instance_type        = "t2.micro"

@@ -14,8 +14,8 @@ phases:
   build:
     commands:
       - cd $CODEBUILD_SRC_DIR/infrastructure
-      - terraform init -input=true
-      - terraform plan -input=true
+      - terraform init -input=false
+      - terraform plan -input=false
       - terraform apply -auto-approve
   post_build:
     commands:
